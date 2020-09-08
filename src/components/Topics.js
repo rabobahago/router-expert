@@ -1,24 +1,25 @@
 import React from 'react'
 import { Link, Route } from 'react-router-dom'
-const Topic = (props) => {
-  console.log('PROPS ', props)
-  return <h2>{props.match.params.topicId}</h2>
+const Topic = ({ match }) => {
+  //console.log('PROPS ', props)
+  return <h2>{match.params.topicId}</h2>
 }
 const Topics = () => {
   return (
     <div>
       <ul>
         <li>
-          <Link to="/topics/rendering">Rendering with react</Link>
+          <Link to={`${match.url}/rendering`}>Rendering with react</Link>
         </li>
         <li>
-          <Link to="/topics/components">Components</Link>
+          <Link to={`${match.url}/components`}>Components</Link>
         </li>
         <li>
-          <Link to="/topics/props-vs-state">Props vs State</Link>
+          <Link to={`${match.url}/props-vs-state`}>Props vs State</Link>
         </li>
       </ul>
-      <Route path="/topics/:topicId" component={Topic} />
+      <hr />
+      <Route path={`${match.path}/:topicId`} component={Topic} />
     </div>
   )
 }
